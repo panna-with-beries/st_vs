@@ -1,22 +1,16 @@
-"""
-7. Ну і традиційно -> калькулятор :) повинна бути 1 ф-цiя яка б приймала 3 аргументи - один з яких операцiя, яку зробити!
-"""
-
 def calc(x, o, y):
-    x, y = int(x), int(y)
+    x, y = float(x), float(y)
     if o == '+':
         return x + y
     if o == '-':
         return x - y
     if o == '*':
         return x * y
+    if y == 0:
+        return 'division by 0'
     if o == '/':
-        if y == 0:
-            return 'div 0'
         return x / y
-    return 'No fined operation'
 
-
-x, o, y = input().split()
+x, o, y = map(str, input().split())
 
 print(calc(x, o, y))
