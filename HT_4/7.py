@@ -3,9 +3,11 @@
 """
 
 
-def same(a):
-    b = set(a)
-    return len(a) - len(b)
+def same(el):
+    dikt = {}
+    for x in el:
+        dikt.update({x: el.count(x)})
+    print(dikt)
 
-a = list(map(int, input().split()))
-print(same(a))
+list_random = [1, 2, 'h', 'h', 'j', 'j', 2, 7]
+same(list_random)
