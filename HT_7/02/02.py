@@ -11,32 +11,38 @@
    █ █ █ ░ ░ ░ ░ ░ ░ █ █ █ ░ ░ ░ ░ █ █ █    - неправильно
                      ⏫ центр
 """
-import pathlib
+def print_list(name, count_number):
+    with open(name, "r") as file:
+        
+        str1 = file.read()
+        len_str1 = len(str1)
+        if len_str1 < n:
+            raise LimitCharsString()
+        if len_str1 < count_number*3:
+            res = []
+            n = ''
+            centre_position = len_str1 // 2 - count_number // 2
+            res.append(str1[:count_number])
+            res.append(str1[centre_position: centre_position + count_number])
+            res.append(str1[-count_number:])
+            n = '*' * count_number
+            res = n.join(res)
+        else:
+            count_space = len_str1 - count_number*3
+            count_space_r = (count_space)//2
+            count_space_l = count_space - count_space_r
 
-def print_string_file(name_file, n):
-   with open(pathlib.Path(__file__).parent.resolve().joinpath(name_file), 'r') as file:
-      line = file.read()
-      len_str = len(line)
-      if len_str < n * 3:
-         print('error')
-      else:
-         res = line[:n]
-         space = len_str - n * 3
-         right = space // 2
-         left = space - right
+            temp = count_number + count_space_l
 
-         
-         res += '*' * left
-         
-         tmp = n + left
-         res += line[tmp: tmp + n]
-         res += '*' * right
-         res += line[-n:]
-         print(res)
+            res = str1[:count_number]
+            res += '*' * count_space_l
+        
+            res +=str1[temp: temp + count_number]
+           
+            res += '*' * count_space_r
+            res += str1[-count_number:]
+        print(res)
 
 
-print_string_file('t1.txt', 3)
-print_string_file('t2.txt', 2)
-print_string_file('t2.txt', 2)
-print_string_file('t2.txt', 20)
-print(pathlib.Path(__file__).parent.joinpath('55.txt'))
+print_list('t1.txt', 4)
+print_list('t2.txt', 2)
